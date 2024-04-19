@@ -3,7 +3,7 @@ import { createArticle } from "@/src/blogAPI";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const createBlogPage = () => {
+const CreateBlogPage = () => {
   const router = useRouter();
   const [id, setId] = useState<string>("");
   const [title, setTitle] = useState<string>("");
@@ -83,4 +83,4 @@ const createBlogPage = () => {
   );
 };
 
-export default createBlogPage;
+export default CreateBlogPage;
