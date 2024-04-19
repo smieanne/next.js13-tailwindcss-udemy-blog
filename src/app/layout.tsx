@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Suspense } from "react";
-import Loading from "./loading";
+import Loading from "../loading";
 
 //どのファイルでも同じレイアウトにしたい時にここのファイルに記述
 

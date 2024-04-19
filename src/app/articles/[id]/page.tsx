@@ -1,15 +1,20 @@
-import { getDetailArticle } from "@/app/blogAPI";
-import DeleteButton from "@/app/components/DeleteButton";
+import { getDetailArticle } from "@/src/blogAPI";
+import DeleteButton from "@/src/app/components/DeleteButton";
 import Image from "next/image";
 import React from "react";
 
 const Article = async ({ params }: { params: { id: string } }) => {
   //const detailArticle = await getDetailArticle(params.id);
 
+  //Blog詳細ページ表示用API
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${API_URL}/api${params.id}`, {
-    next: { revalidate: 10 },
+
+  const res = await fetch(`${API_URL}/api/blog/${params.id}`, {
+    next: {
+      revalidate: 10,
+    },
   });
+
   const detailArticle = await res.json();
 
   return (
@@ -19,6 +24,7 @@ const Article = async ({ params }: { params: { id: string } }) => {
         alt=""
         width={1280}
         height={300}
+        priority
       />
       <h1 className="text-4xl text-center mb-10 mt-10">
         {detailArticle.title}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Article } from "../types";
+import { Article } from "../../types";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -16,6 +16,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           alt=""
           width={1280}
           height={300}
+          priority
         />
       </Link>
       <div className="bg-white flex flex-col justify-start p-6">
@@ -29,7 +30,8 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           {article.title}
         </Link>
         <p className="text-sm pb-3 text-slate-900">
-          Pulished on {article.createdAt}
+          Pulished on {new Date(article.createdAt).toLocaleString()}
+          {/*toLocalDateString関数で東京の日時が反映される　※toLocalStringにすると時間も表示されるようになる */}
         </p>
         <Link href={`articles/${article.id}`} className="text-slate-900 pb-6">
           {article.content.length > 70
